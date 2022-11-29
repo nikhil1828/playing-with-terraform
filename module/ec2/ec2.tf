@@ -15,6 +15,6 @@ resource "aws_instance" "web" {
   EOF
 #   user_data_base64 = "IyEvYmluL2Jhc2gKYXB0IHVwZGF0ZQphcHQgaW5zdGFsbCBuZ2lueCAteQphcHQgaW5zdGFsbCBkb2NrZXIuaW8gLXkKaG9zdG5hbWVjdGwgc2V0LWhvc3RuYW1lIG5naW54LXNlcnZlcg=="
   tags = {
-    Name = "${terraform.workspace}-ec2-${each.value["pub-snet"]}"
+    Name = "${terraform.workspace}-ec2-${each.value["hostname"]}"
   }
 }
