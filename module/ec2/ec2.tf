@@ -8,10 +8,10 @@ resource "aws_instance" "web" {
 #   count=length(var.ec2-tags)
   user_data = <<-EOF
   #!/bin/bash
+  hostnamectl set-hostname ${each.value["hostname"]}
   apt update
   apt install nginx -y
   apt install docker.io -y
-  hostnamectl set-hostname server-01
   EOF
 #   user_data_base64 = "IyEvYmluL2Jhc2gKYXB0IHVwZGF0ZQphcHQgaW5zdGFsbCBuZ2lueCAteQphcHQgaW5zdGFsbCBkb2NrZXIuaW8gLXkKaG9zdG5hbWVjdGwgc2V0LWhvc3RuYW1lIG5naW54LXNlcnZlcg=="
   tags = {
