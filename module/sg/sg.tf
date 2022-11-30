@@ -13,7 +13,6 @@ resource "aws_security_group" "allow_tls" {
       cidr_blocks       = lookup(ingress.value, "cidr_blocks", null)
     }
   }
-
   egress {
     from_port        = 0
     to_port          = 0

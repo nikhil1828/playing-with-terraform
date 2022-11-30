@@ -13,11 +13,6 @@ variable "instance_type" {
     type = string
 }
 
-variable "key_name" {
-    description = "Key pair for accessing the instance"
-    type = string
-}
-
 variable "sg" {}
 
 variable "ec2_sub" {
@@ -27,5 +22,3 @@ variable "ec2_sub" {
             hostname = string
     }))
 }
-
-# variable "ec2-user-data" {}

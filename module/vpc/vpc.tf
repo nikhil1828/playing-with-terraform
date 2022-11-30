@@ -1,5 +1,5 @@
 //decleration of vpc
-resource "aws_vpc" "test_vpc" {
+resource "aws_vpc" "vpc" {
   cidr_block = var.vpc_cidr
   instance_tenancy = "default"
 
@@ -11,7 +11,7 @@ resource "aws_vpc" "test_vpc" {
 //decleration of public subnet
 resource "aws_subnet" "pub-snet" {
     for_each = var.pub_snet_details
-    vpc_id     = aws_vpc.test_vpc.id 
+    vpc_id     = aws_vpc.vpc.id 
     cidr_block = each.value["cidr_block"]
     availability_zone = each.value["availability_zone"]
     map_public_ip_on_launch = true
@@ -23,7 +23,7 @@ resource "aws_subnet" "pub-snet" {
 
 # creating igw for pub snet
 resource "aws_internet_gateway" "igw" {
-  vpc_id = aws_vpc.test_vpc.id
+  vpc_id = aws_vpc.vpc.id
 
   tags = {
     Name = "${terraform.workspace}-vpc-pub-igw"
@@ -32,7 +32,7 @@ resource "aws_internet_gateway" "igw" {
 
 # creating a igw route table
 resource "aws_route_table" "pub_rt" {
-  vpc_id = aws_vpc.test_vpc.id
+  vpc_id = aws_vpc.vpc.id
 
     route {
    cidr_block = "0.0.0.0/0"
