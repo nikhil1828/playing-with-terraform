@@ -1,5 +1,8 @@
 # Decalring VPC CIDR
-variable "vpc_cidr" {}
+variable "vpc_cidr" {
+  description = "Desired CIDR of VPC"
+  type = string
+}
 
 variable "pub_snet_details" {
   type = map(object({
