@@ -1,8 +1,8 @@
 resource "aws_security_group" "allow_tls" {
+  vpc_id      = var.vpc_id
   for_each    = var.sg_details
   name        = each.value["name"]
   description = each.value["description"]
-  vpc_id      = each.value["vpc_id"]
 
   dynamic "ingress" {
     for_each = lookup(each.value, "ingress_rules", [])
@@ -13,7 +13,6 @@ resource "aws_security_group" "allow_tls" {
       cidr_blocks       = lookup(ingress.value, "cidr_blocks", null)
     }
   }
-
   egress {
     from_port        = 0
     to_port          = 0

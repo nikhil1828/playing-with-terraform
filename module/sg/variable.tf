@@ -1,8 +1,11 @@
+variable "vpc_id" {
+  description = "VPC in which SG has to to attached"
+}
 variable "sg_details" {
+  description = "Desired Security Group rules"
   type = map(object({
     name        = string
     description = string
-    vpc_id      = string
     ingress_rules = list(object({
       from_port         = number
       to_port           = number

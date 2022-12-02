@@ -1,5 +1,5 @@
 output "vpc_id"{
-    value = aws_vpc.test_vpc.id
+    value = aws_vpc.vpc.id
 }
 
 output "pub_snetid" {
