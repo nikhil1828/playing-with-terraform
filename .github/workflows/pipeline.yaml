@@ -36,7 +36,6 @@ jobs:
 
       - name: Checkout Codebase
         uses: actions/checkout@v2
-        name: Download codebase
       
       - name: Terraform Initialize
         run: terraform init
