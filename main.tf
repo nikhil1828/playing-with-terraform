@@ -30,10 +30,6 @@ module "ec2" {
     ec2-001 = {
         pub-snet = lookup(module.vpc.pub_snetid,"snet-pb-1", null).id
         hostname = "server-1"
-    },
-    ec2-002 = {
-        pub-snet = lookup(module.vpc.pub_snetid,"snet-pb-2", null).id
-        hostname = "server-2"
     }
   }
   sg = [lookup(module.sg.sg_id,"ec2-sg",null)]

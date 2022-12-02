@@ -3,10 +3,6 @@ pub_snet_details = {
     snet-pb-1 ={
         cidr_block = "10.0.0.0/21",
         availability_zone = "ap-southeast-1a"
-    },
-    snet-pb-2 ={
-        cidr_block = "10.0.8.0/21",
-        availability_zone = "ap-southeast-1b"
     }
 }
 
