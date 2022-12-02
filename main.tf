@@ -37,6 +37,6 @@ module "ec2" {
   instance_type = var.instance_type
 }
 
-output "EC2-IPs" { 
+output "EC2-IP" { 
   value = module.ec2.ec2-details
 }
