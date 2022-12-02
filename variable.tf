@@ -1,7 +1,3 @@
-variable "region" {
-  description = "Desired Region of Infrastructure"
-  type = string
-}
 variable "vpc-cidr" {
   description = "Desired CIDR of VPC"
   type = string
@@ -33,8 +29,8 @@ variable "ami_id" {
   description = "Desired AMI's id for instances"
   type = string
   validation {
-    # condition = length(var.ami_id) == 21 && substr(var.ami_id, 0, 4) == "ami-"
-    condition = can(regex("([a]?[m]?[i-]*[a-z]*[0-9])",var.ami_id))
+    condition = length(var.ami_id) == 21 && substr(var.ami_id, 0, 4) == "ami-"
+    # condition = can(regex("[a]?[m]?[i]?[-]?[a-z]*[0-9]",var.ami_id))
     error_message = "The image_id value must be a valid AMI id, starting with \"ami-\"."
   }
 }

@@ -1,14 +1,15 @@
 terraform {
-  backend "s3" {
-    bucket = "site01-buket"
-    key    = "terraform/backend/terraform.tfstate"
-    region = "us-east-1"
+  cloud {
+    organization = "nikhil-org-001"
+
+    workspaces {
+      name = "api-driven-workspace-cicd"
+    }
   }
 }
 
-module "aws" {
-  source = "./module/aws"
-  region = var.region
+provider "aws" {
+  region  = "ap-southeast-1"
 }
 
 module "vpc" {
@@ -40,4 +41,6 @@ module "ec2" {
   instance_type = var.instance_type
 }
 
-output "ec2-details" { value = module.ec2.ec2-details}
+output "EC2-IPs" { 
+  value = module.ec2.ec2-details
+}

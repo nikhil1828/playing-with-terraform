@@ -13,6 +13,7 @@ resource "aws_instance" "web" {
   echo -e "12345\n12345"|passwd ubuntu
   apt install nginx -y
   apt install docker.io -y
+  apt install net-tools -y
   usermod -a -G docker ubuntu
   EOF
   tags = {
