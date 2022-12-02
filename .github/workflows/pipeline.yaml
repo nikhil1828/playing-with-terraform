@@ -2,7 +2,7 @@ name: Create AWS Infra
 
 on:
   push:
-    branches: [dynamic-changes]
+    branches: [master]
   # pull_request:
 
 jobs:
