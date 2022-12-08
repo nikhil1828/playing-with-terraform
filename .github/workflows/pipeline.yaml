@@ -43,7 +43,7 @@ jobs:
         run: terraform validate -no-color
 
       - name: Terraform plan 
-        uses: dflook/terraform-plan@v1
+        uses: terraform plan
 
       - name: Terraform apply
         run: terraform apply -auto-approve -input=false
