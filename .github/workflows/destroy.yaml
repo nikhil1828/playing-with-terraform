@@ -1,27 +1,13 @@
-name: Create AWS Infra
+name: Destroy AWS Infra
 
 on:
-  push:
-    branches: [dynamic-changes]
+  workflow_dispatch:
 
 jobs:
   job1:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Create Tag version
-        uses: anothrNick/github-tag-action@1.40.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          WITH_V: true
-
-      - name: Create release version
-        uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: latest
-          prerelease: true
-
       - name: Checkout Codebase
         uses: actions/checkout@v2
       
@@ -45,5 +31,5 @@ jobs:
       - name: Terraform plan 
         run: terraform plan
 
-      # - name: Terraform apply
-      #   run: terraform apply -auto-approve -input=false
+      - name: Terraform destroy
+        run: terraform destroy -auto-approve -input=false
