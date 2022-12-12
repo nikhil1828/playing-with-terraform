@@ -12,7 +12,7 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID:      ${{secrets.AWS_ACCESS_KEY_ID}} 
       AWS_SECRET_ACCESS_KEY:  ${{secrets.AWS_SECRET_ACCESS_KEY}} 
-      GITHUB_TOKEN:           ${{secrets.GIT_PAT}}
+      GITHUB_TOKEN:           ${{secrets.GITHUB_TOKEN}}
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
@@ -30,12 +30,6 @@ jobs:
       # Checkout the repository to the GitHub Actions runner
       - name: Checkout 
         uses: actions/checkout@v3
-      
-      # - name: Setup Terraform
-      #   uses: hashicorp/setup-terraform@v1
-      #   with:
-      #     # terraform_version: 0.13.0
-      #     cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Terraform Initialize
         run: | 
