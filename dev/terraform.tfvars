@@ -30,3 +30,6 @@ sg_details = {
 
 ami_id        = "ami-00e912d13fbb4f225"
 instance_type = "t2.micro"
+
+environment = "networking"
+stage = "test"

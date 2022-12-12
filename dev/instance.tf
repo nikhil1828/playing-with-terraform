@@ -9,4 +9,6 @@ module "ec2" {
   sg            = [lookup(module.sg.sg_id, "ec2-sg", null)]
   ami_id        = var.ami_id
   instance_type = var.instance_type
+  environment = var.environment
+  stage = var.stage
 }

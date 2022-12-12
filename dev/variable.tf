@@ -42,3 +42,11 @@ variable "instance_type" {
   description = "Desired instance type"
   type        = string
 }
+
+variable "environment" {
+  type = string
+}
+
+variable "stage" {
+  type = string
+}
