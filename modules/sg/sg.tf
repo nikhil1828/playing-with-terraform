@@ -20,6 +20,6 @@ resource "aws_security_group" "allow_tls" {
     cidr_blocks      = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "${terraform.workspace}-sg"
+    Name = "${var.environment}-${var.stage}-securit-group"
   }
 }

@@ -4,21 +4,21 @@ resource "aws_vpc" "vpc" {
   instance_tenancy = "default"
 
   tags = {
-    Name ="${terraform.workspace}-vpc"
+    Name = "${var.environment}-${var.stage}-vpc" 
   }
 }
 
 //decleration of public subnet
 resource "aws_subnet" "pub-snet" {
-    for_each = var.pub_snet_details
-    vpc_id     = aws_vpc.vpc.id 
-    cidr_block = each.value["cidr_block"]
-    availability_zone = each.value["availability_zone"]
-    map_public_ip_on_launch = true
+  for_each = var.pub_snet_details
+  vpc_id     = aws_vpc.vpc.id 
+  cidr_block = each.value["cidr_block"]
+  availability_zone = each.value["availability_zone"]
+  map_public_ip_on_launch = true
 
-    tags = {
-    Name = "${terraform.workspace}-pub-snet-${each.value["availability_zone"]}"
-    }
+  tags = {
+    Name = "${var.environment}-${var.stage}-pub-snet-${each.value["availability_zone"]}" 
+  }
 }
 
 # creating igw for pub snet
@@ -26,7 +26,7 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.vpc.id
 
   tags = {
-    Name = "${terraform.workspace}-vpc-pub-igw"
+  Name = "${var.environment}-${var.stage}-igw" 
   }
 }
 
@@ -40,7 +40,7 @@ resource "aws_route_table" "pub_rt" {
    }
 
    tags = {
-   Name = "${terraform.workspace}-vpc-pub-rt"
+   Name = "${var.environment}-${var.stage}-vpc-pub-rt"
    }
 }
 

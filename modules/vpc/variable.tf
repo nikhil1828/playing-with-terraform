@@ -10,3 +10,11 @@ variable "pub_snet_details" {
     availability_zone = string
   }))
 }
+
+variable "environment" {
+  type = string
+}
+
+variable "stage" {
+  type = string
+}
